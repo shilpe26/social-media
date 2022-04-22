@@ -1,11 +1,22 @@
 import "./App.css";
 import Mockman from "mockman-js";
-import { Routes, Route } from "./react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { useTheme } from "./Context/theme-context";
 import { Login, Signup, Home } from "./pages/Pages";
 import { Navbar, Footer, PageNotFound } from "./components/Components";
+import "./stylesheets/utility.css";
+
 function App() {
+	const { theme } = useTheme();
+
 	return (
-		<div className="App">
+		<div
+			className="App flex flex-col min-h-screen"
+			style={{
+				backgroundColor: theme.mode.bgColor,
+				color: theme.mode.textColor,
+			}}
+		>
 			<div>
 				<Navbar />
 			</div>

@@ -1,17 +1,24 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./Context/auth-context";
+import { ThemeProvider } from "./Context/theme-context.jsx";
 import { makeServer } from "./server";
 
 // Call make Server
 makeServer();
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<App />
+			<ThemeProvider>
+				<AuthProvider>
+					<App />
+				</AuthProvider>
+			</ThemeProvider>
 		</BrowserRouter>
-	</React.StrictMode>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
